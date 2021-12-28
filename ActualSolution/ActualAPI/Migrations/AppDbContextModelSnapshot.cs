@@ -47,7 +47,7 @@ namespace ActualAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Addresss");
+                    b.ToTable("AddresssBook");
                 });
 #pragma warning restore 612, 618
         }

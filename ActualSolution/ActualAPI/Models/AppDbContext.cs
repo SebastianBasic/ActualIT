@@ -9,6 +9,6 @@ namespace ActualAPI.Models
 
         }
 
-        public DbSet<AddressBook> Addresss { get; set; }
+        public DbSet<AddressBook> AddressBook { get; set; }
     }
 }
