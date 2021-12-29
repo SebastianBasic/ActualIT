@@ -47,6 +47,14 @@ export class IndexComponent implements OnInit {
     this.AddEditComponent = true;
   }
 
+  deleteClick(address:any){
+    if(confirm('Are you shure?')){
+      this.service.deleteAddress(address.id).subscribe(data => {
+        alert("Address deleted")
+      });
+    }
+  }
+
   closeClick(){
     this.refreshAddreessList();
     this.AddEditComponent = false;
