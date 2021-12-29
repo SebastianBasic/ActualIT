@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AddressbookComponent } from './addressbook/addressbook.component';
 import { UpsertComponent } from './addressbook/upsert/upsert.component';
 import { SharedService } from './shared.service';
+import { IndexComponent } from './addressbook/index/index.component';
 
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,14 +16,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     AddressbookComponent,
-    UpsertComponent
+    UpsertComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [SharedService],
   bootstrap: [AppComponent]
