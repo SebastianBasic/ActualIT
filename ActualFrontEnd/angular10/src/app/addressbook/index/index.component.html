@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal upsert form -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -26,8 +26,10 @@
             (click)="closeClick()"></button>
             </div>
             <div class="modal-body">
-                <app-addressbook-upsert [AddressBookEntry] = "AddressBookEntry" 
-                *ngIf="AddEditComponent"></app-addressbook-upsert>
+                <app-addressbook-upsert-form [AddressBookEntry] = "AddressBookEntry" 
+                *ngIf="ShowAddEditComponent"></app-addressbook-upsert-form>
+                <app-addressbook-delete-confirm [AddressBookEntry] = "AddressBookEntry" 
+                *ngIf="ShowDeleteComponent"></app-addressbook-delete-confirm>
             </div>
         </div>
         </div>
@@ -53,14 +55,21 @@
                     <td>
                         <button class="btn btn-success text-white" data-bs-toggle="modal" data-bs-target="#exampleModal"
                         (click)="editClick(Address)" data-backdrop="static"
-                        data-keyboard="false" title="view details"><i class="far fa-eye"></i></button>
+                        data-keyboard="false" title="view details">
+                            <i class="far fa-eye"></i>
+                        </button>
                         &nbsp;
                         <button class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#exampleModal"
                         (click)="editClick(Address)" data-backdrop="static"
-                        data-keyboard="false" title="edit record"><i class="far fa-edit"></i></button>
+                        data-keyboard="false" title="edit record">
+                            <i class="far fa-edit"></i>
+                        </button>
                         &nbsp;
                         <button class="btn btn-danger" 
-                        (click)="deleteClick(Address)" title="delete record"><i class="far fa-trash"></i></button>
+                        title="delete record" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        data-backdrop="static" (click)="deleteClick(Address)" data-keyboard="false">
+                            <i class="far fa-trash"></i>
+                        </button>
                     </td>
                 </tr>
             </tbody>

@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 
 @Component({
-  selector: 'app-addressbook-upsert',
+  selector: 'app-addressbook-upsert-form',
   templateUrl: './upsert.component.html',
   styleUrls: ['./upsert.component.css']
 })

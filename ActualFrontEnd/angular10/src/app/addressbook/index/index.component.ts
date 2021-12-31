@@ -17,7 +17,8 @@ export class IndexComponent implements OnInit {
 
   ModalTitle:string = "";
   AddressBookEntry:any;
-  AddEditComponent:boolean = false;
+  ShowAddEditComponent:boolean = false;
+  ShowDeleteComponent:boolean = false;
 
   ngOnInit(): void {
     this.refreshAddreessList();
@@ -39,27 +40,27 @@ export class IndexComponent implements OnInit {
     }
 
     this.ModalTitle = "Add New Address";
-    this.AddEditComponent = true;
+    this.ShowAddEditComponent = true;
   }
 
   editClick(address:any){
     this.AddressBookEntry = address;
 
     this.ModalTitle = "Edit Address";
-    this.AddEditComponent = true;
+    this.ShowAddEditComponent = true;
   }
 
   deleteClick(address:any){
-    if(confirm('Are you shure?')){
-      this.service.deleteAddress(address.id).subscribe(data => {
-        alert("Address deleted")
-      });
-    }
+    this.AddressBookEntry = address;
+
+    this.ModalTitle = "Delete Address";
+    this.ShowDeleteComponent = true;
   }
 
   closeClick(){
     this.refreshAddreessList();
-    this.AddEditComponent = false;
+    this.ShowAddEditComponent = false;
+    this.ShowDeleteComponent = false;
   }
 
 }
