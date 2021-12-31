@@ -2,10 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AddressbookComponent } from './addressbook/addressbook.component';
+import { IndexComponent } from './addressbook/index/index.component';
 import { UpsertComponent } from './addressbook/upsert/upsert.component';
 import { SharedService } from './shared.service';
-import { IndexComponent } from './addressbook/index/index.component';
 
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,7 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AddressbookComponent,
+    IndexComponent,
     UpsertComponent,
     IndexComponent
   ],
@@ -25,6 +24,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
   ],
   providers: [SharedService],
-  bootstrap: [AddressbookComponent]
+  bootstrap: [IndexComponent]
 })
 export class AppModule { }

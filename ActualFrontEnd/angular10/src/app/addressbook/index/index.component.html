@@ -1,11 +1,21 @@
-<div class="container" style="margin-top: 5%;">
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-    (click)="addClick()" data-backdrop="static"
-    data-keyboard="false">
-        Add New Address
-    </button>
-    
+<div class="container" style="margin-top: 1%;">
+    <div class="row" style="margin-bottom: 5%;">
+        <h1 class="display-4 text-center">Address Book CRUD Application</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-10">
+            <h4>List of Existing Addresses</h4>
+        </div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            (click)="addClick()" data-backdrop="static"
+            data-keyboard="false">
+                <i class="fa fa-plus"></i> Add New Address
+            </button>
+        </div>
+    </div>
+
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -23,31 +33,37 @@
         </div>
     </div>
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>first name</th>
-                <th>last name</th>
-                <th>address</th>
-                <th>phone number</th>
-                <th>action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let Address of AddressBook">
-                <td>{{ Address.firstName }}</td>
-                <td>{{ Address.lastName }}</td>
-                <td>{{ Address.adress }}</td>
-                <td>{{ Address.telNumber }}</td>
-                <td>
-                    <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                    (click)="editClick(Address)" data-backdrop="static"
-                    data-keyboard="false">Edit</button>
-                    &nbsp;
-                    <button class="btn btn-danger" 
-                    (click)="deleteClick(Address)">Delete</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>first name</th>
+                    <th>last name</th>
+                    <th>address</th>
+                    <th>phone number</th>
+                    <th>action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let Address of AddressBook">
+                    <td>{{ Address.firstName }}</td>
+                    <td>{{ Address.lastName }}</td>
+                    <td>{{ Address.adress }}</td>
+                    <td>{{ Address.telNumber }}</td>
+                    <td>
+                        <button class="btn btn-success text-white" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        (click)="editClick(Address)" data-backdrop="static"
+                        data-keyboard="false" title="view details"><i class="far fa-eye"></i></button>
+                        &nbsp;
+                        <button class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        (click)="editClick(Address)" data-backdrop="static"
+                        data-keyboard="false" title="edit record"><i class="far fa-edit"></i></button>
+                        &nbsp;
+                        <button class="btn btn-danger" 
+                        (click)="deleteClick(Address)" title="delete record"><i class="far fa-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

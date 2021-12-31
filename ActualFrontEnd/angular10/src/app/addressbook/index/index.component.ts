@@ -7,11 +7,13 @@ import { SharedService } from 'src/app/shared.service';
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.css']
 })
+
 export class IndexComponent implements OnInit {
 
   constructor(private service:SharedService) { }
 
   AddressBook:any = [];
+  title = 'AddressBook';
 
   ModalTitle:string = "";
   AddressBookEntry:any;
