@@ -22,14 +22,14 @@
         <div class="modal-content">
             <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            <button #closebutton type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
             (click)="closeClick()"></button>
             </div>
             <div class="modal-body">
                 <app-addressbook-upsert-form [AddressBookEntry] = "AddressBookEntry" 
-                *ngIf="ShowAddEditComponent"></app-addressbook-upsert-form>
-                <app-addressbook-delete-confirm [AddressBookEntry] = "AddressBookEntry" 
-                *ngIf="ShowDeleteComponent"></app-addressbook-delete-confirm>
+                *ngIf="ShowAddEditComponent" (onClose)="closeClick()"></app-addressbook-upsert-form>
+                <app-addressbook-delete-confirm [AddressBookEntry] = "AddressBookEntry"
+                *ngIf="ShowDeleteComponent" (onClose)="closeClick()"></app-addressbook-delete-confirm>
             </div>
         </div>
         </div>

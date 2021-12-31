@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 
 
@@ -11,6 +11,8 @@ import { SharedService } from 'src/app/shared.service';
 export class IndexComponent implements OnInit {
 
   constructor(private service:SharedService) { }
+
+  @ViewChild('closebutton') closebutton:any;
 
   AddressBook:any = [];
   title = 'AddressBook';
@@ -58,9 +60,10 @@ export class IndexComponent implements OnInit {
   }
 
   closeClick(){
-    this.refreshAddreessList();
+    this.closebutton.nativeElement.click();
     this.ShowAddEditComponent = false;
     this.ShowDeleteComponent = false;
+    this.refreshAddreessList();
   }
 
 }

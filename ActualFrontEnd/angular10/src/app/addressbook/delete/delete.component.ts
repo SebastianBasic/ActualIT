@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 
 @Component({
@@ -11,6 +11,7 @@ export class DeleteComponent implements OnInit {
   constructor(private service: SharedService) { }
 
   @Input() AddressBookEntry:any;
+  @Output() onClose: EventEmitter<boolean> = new EventEmitter();
   Id:string = "";
 
 
@@ -20,10 +21,13 @@ export class DeleteComponent implements OnInit {
   }
 
   deleteAddressBookEntry(){
-
     this.service.deleteAddress(this.Id).subscribe(data=>{
-      
+      this.onClose.emit(true);
     });   
+  }
+
+  cancelDelete(){
+    this.onClose.emit(true);  
   }
 
 }

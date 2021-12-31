@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 
 @Component({
@@ -13,6 +13,7 @@ export class UpsertComponent implements OnInit {
   ActivateAddEditComponent:boolean = false;
 
   @Input() AddressBookEntry:any;
+  @Output() onClose: EventEmitter<boolean> = new EventEmitter();
 
   Id:string = "";
   FirstName:string = "";
@@ -38,7 +39,7 @@ export class UpsertComponent implements OnInit {
     }
 
     this.service.addAddress(entry).subscribe(res => {
-      alert("Address successfully added");
+      this.onClose.emit(true);
     });
   }
 
@@ -52,7 +53,7 @@ export class UpsertComponent implements OnInit {
     }
 
     this.service.updateAddress(entry).subscribe(res => {
-      alert("Address successfully updated");
+      this.onClose.emit(true);
     });
   }
 }
