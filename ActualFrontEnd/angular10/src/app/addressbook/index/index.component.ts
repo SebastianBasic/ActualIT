@@ -21,6 +21,7 @@ export class IndexComponent implements OnInit {
   AddressBookEntry:any;
   ShowAddEditComponent:boolean = false;
   ShowDeleteComponent:boolean = false;
+  ShowShowComponent:boolean = false;
 
   ngOnInit(): void {
     this.refreshAddreessList();
@@ -45,6 +46,13 @@ export class IndexComponent implements OnInit {
     this.ShowAddEditComponent = true;
   }
 
+  showClick(address:any){
+    this.AddressBookEntry = address;
+
+    this.ModalTitle = "Record details";
+    this.ShowShowComponent = true;
+  }
+
   editClick(address:any){
     this.AddressBookEntry = address;
 
@@ -63,6 +71,7 @@ export class IndexComponent implements OnInit {
     this.closebutton.nativeElement.click();
     this.ShowAddEditComponent = false;
     this.ShowDeleteComponent = false;
+    this.ShowShowComponent = false;
     this.refreshAddreessList();
   }
 

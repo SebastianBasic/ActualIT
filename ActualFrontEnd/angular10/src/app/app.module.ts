@@ -9,6 +9,7 @@ import { SharedService } from './shared.service';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeleteComponent } from './addressbook/delete/delete.component';
+import { ShowComponent } from './addressbook/show/show.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { DeleteComponent } from './addressbook/delete/delete.component';
     IndexComponent,
     UpsertComponent,
     IndexComponent,
-    DeleteComponent
+    DeleteComponent,
+    ShowComponent
   ],
   imports: [
     BrowserModule,

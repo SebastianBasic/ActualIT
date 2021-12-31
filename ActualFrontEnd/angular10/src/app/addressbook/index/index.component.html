@@ -30,6 +30,8 @@
                 *ngIf="ShowAddEditComponent" (onClose)="closeClick()"></app-addressbook-upsert-form>
                 <app-addressbook-delete-confirm [AddressBookEntry] = "AddressBookEntry"
                 *ngIf="ShowDeleteComponent" (onClose)="closeClick()"></app-addressbook-delete-confirm>
+                <app-addressbook-show [AddressBookEntry] = "AddressBookEntry"
+                *ngIf="ShowShowComponent" (onClose)="closeClick()"></app-addressbook-show>
             </div>
         </div>
         </div>
@@ -54,7 +56,7 @@
                     <td>{{ Address.telNumber }}</td>
                     <td>
                         <button class="btn btn-success text-white" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                        (click)="editClick(Address)" data-backdrop="static"
+                        (click)="showClick(Address)" data-backdrop="static"
                         data-keyboard="false" title="view details">
                             <i class="far fa-eye"></i>
                         </button>
