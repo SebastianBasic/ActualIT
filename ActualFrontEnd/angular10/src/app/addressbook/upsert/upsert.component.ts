@@ -30,30 +30,22 @@ export class UpsertComponent implements OnInit {
     this.TelNumber = this.AddressBookEntry.telNumber;
   }
 
-  addAddressBookEntry(){
+  onSubmit(){
     var entry = {
       firstName : this.FirstName,
       lastName : this.LastName,
       adress : this.Address,
       telNumber : this.TelNumber
     }
-
-    this.service.addAddress(entry).subscribe(res => {
-      this.onClose.emit(true);
-    });
-  }
-
-  updateAddressBookEntry(){
-    var entry = {
-      id : this.Id,
-      FirstName : this.FirstName,
-      LastName : this.LastName,
-      Adress : this.Address,
-      TelNumber : this.TelNumber
+  
+    if (this.AddressBookEntry.firstName) {
+      this.service.updateAddress(entry).subscribe(res => {
+        this.onClose.emit(true);
+      });
+    }else{
+      this.service.addAddress(entry).subscribe(res => {
+        this.onClose.emit(true);
+      });
     }
-
-    this.service.updateAddress(entry).subscribe(res => {
-      this.onClose.emit(true);
-    });
   }
 }
