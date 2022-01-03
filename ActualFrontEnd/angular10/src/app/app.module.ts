@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
-import { IndexComponent } from './addressbook/index/index.component';
-import { UpsertComponent } from './addressbook/upsert/upsert.component';
-import { SharedService } from './shared.service';
-
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {DataTablesModule} from 'angular-datatables';
+
+import { IndexComponent } from './addressbook/index/index.component';
+import { UpsertComponent } from './addressbook/upsert/upsert.component';
 import { DeleteComponent } from './addressbook/delete/delete.component';
 import { ShowComponent } from './addressbook/show/show.component';
 
+import { SharedService } from './shared.service';
 
 @NgModule({
   declarations: [
@@ -26,6 +26,7 @@ import { ShowComponent } from './addressbook/show/show.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    DataTablesModule,
   ],
   providers: [SharedService],
   bootstrap: [IndexComponent]

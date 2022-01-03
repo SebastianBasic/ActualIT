@@ -1,6 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import {Subject} from 'rxjs';
 
+class DataTablesResponse {
+  data: any[] = [];
+  draw: number = 0;
+  recordsFiltered: number = 0;
+  recordsTotal: number = 0;
+}
 
 @Component({
   selector: 'app-addressbook-index',
@@ -8,9 +16,9 @@ import { SharedService } from 'src/app/shared.service';
   styleUrls: ['./index.component.css']
 })
 
-export class IndexComponent implements OnInit {
+export class IndexComponent implements OnInit, OnDestroy {
 
-  constructor(private service:SharedService) { }
+  constructor(private service:SharedService, private http: HttpClient) { }
 
   @ViewChild('closebutton') closebutton:any;
 
@@ -23,13 +31,26 @@ export class IndexComponent implements OnInit {
   ShowDeleteComponent:boolean = false;
   ShowShowComponent:boolean = false;
 
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject<any>();
+
   ngOnInit(): void {
-    this.refreshAddreessList();
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      lengthMenu : [5, 10, 25],
+    }
+  this.refreshAddreessList();
+  }
+
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
   }
 
   refreshAddreessList() {
     this.service.getAddressList().subscribe(data => {
       this.AddressBook = data;
+      this.dtTrigger.next(this.dtOptions);
     })
   }
 
@@ -72,7 +93,7 @@ export class IndexComponent implements OnInit {
     this.ShowAddEditComponent = false;
     this.ShowDeleteComponent = false;
     this.ShowShowComponent = false;
-    this.refreshAddreessList();
+    window.location.reload();
   }
 
 }
