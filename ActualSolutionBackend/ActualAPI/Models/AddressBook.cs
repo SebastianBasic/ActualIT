@@ -12,7 +12,7 @@ namespace ActualAPI.Models
         [Required]
         public string LastName { get; set; }
         [Required]
-        public string Adress { get; set; }
+        public string Address { get; set; }
         [Required]
         public string TelNumber { get; set; }
     }

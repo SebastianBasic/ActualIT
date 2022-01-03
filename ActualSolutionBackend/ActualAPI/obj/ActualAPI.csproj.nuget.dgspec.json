@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\.NET projects\\ActualRepository\\ActualSolution\\ActualAPI\\ActualAPI.csproj": {}
+    "D:\\.NET projects\\ActualRepository\\ActualSolutionBackend\\ActualAPI\\ActualAPI.csproj": {}
   },
   "projects": {
-    "D:\\.NET projects\\ActualRepository\\ActualSolution\\ActualAPI\\ActualAPI.csproj": {
+    "D:\\.NET projects\\ActualRepository\\ActualSolutionBackend\\ActualAPI\\ActualAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\.NET projects\\ActualRepository\\ActualSolution\\ActualAPI\\ActualAPI.csproj",
+        "projectUniqueName": "D:\\.NET projects\\ActualRepository\\ActualSolutionBackend\\ActualAPI\\ActualAPI.csproj",
         "projectName": "ActualAPI",
-        "projectPath": "D:\\.NET projects\\ActualRepository\\ActualSolution\\ActualAPI\\ActualAPI.csproj",
+        "projectPath": "D:\\.NET projects\\ActualRepository\\ActualSolutionBackend\\ActualAPI\\ActualAPI.csproj",
         "packagesPath": "C:\\Users\\sbasi\\.nuget\\packages\\",
-        "outputPath": "D:\\.NET projects\\ActualRepository\\ActualSolution\\ActualAPI\\obj\\",
+        "outputPath": "D:\\.NET projects\\ActualRepository\\ActualSolutionBackend\\ActualAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\sbasi\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.1, )"
