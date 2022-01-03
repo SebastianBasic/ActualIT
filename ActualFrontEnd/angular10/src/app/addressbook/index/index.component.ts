@@ -45,7 +45,6 @@ export class IndexComponent implements OnInit, OnDestroy {
 
   refreshAddreessList() {
     this.service.getAddressList().subscribe(data => {
-      console.log(data);
       this.allContacts = data;
       this.dtTrigger.next(this.dtOptions);
     })
