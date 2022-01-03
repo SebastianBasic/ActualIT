@@ -9,7 +9,7 @@ export class ShowComponent implements OnInit {
 
   constructor() { }
 
-  @Input() AddressBookEntry:any;
+  @Input() contact:any;
   @Output() onClose: EventEmitter<boolean> = new EventEmitter();
 
   firstName:string = "";
@@ -18,10 +18,10 @@ export class ShowComponent implements OnInit {
   telNumber:string = "";
 
   ngOnInit(): void {
-    this.firstName = this.AddressBookEntry.firstName;
-    this.lastName = this.AddressBookEntry.lastName;
-    this.address = this.AddressBookEntry.adress;
-    this.telNumber = this.AddressBookEntry.telNumber;
+    this.firstName = this.contact.firstName;
+    this.lastName = this.contact.lastName;
+    this.address = this.contact.adress;
+    this.telNumber = this.contact.telNumber;
   }
 
   closeShow(){

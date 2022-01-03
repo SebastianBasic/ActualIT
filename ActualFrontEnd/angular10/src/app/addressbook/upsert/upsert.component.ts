@@ -12,7 +12,7 @@ export class UpsertComponent implements OnInit {
 
   ActivateAddEditComponent:boolean = false;
 
-  @Input() AddressBookEntry:any;
+  @Input() contact:any;
   @Output() onClose: EventEmitter<boolean> = new EventEmitter();
 
   Id:string = "";
@@ -23,22 +23,22 @@ export class UpsertComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.Id = this.AddressBookEntry.id;
-    this.FirstName = this.AddressBookEntry.firstName;
-    this.LastName = this.AddressBookEntry.lastName;
-    this.Address = this.AddressBookEntry.adress;
-    this.TelNumber = this.AddressBookEntry.telNumber;
+    this.Id = this.contact.id;
+    this.FirstName = this.contact.firstName;
+    this.LastName = this.contact.lastName;
+    this.Address = this.contact.address;
+    this.TelNumber = this.contact.telNumber;
   }
 
   onSubmit(){
     var entry = {
       firstName : this.FirstName,
       lastName : this.LastName,
-      adress : this.Address,
+      address : this.Address,
       telNumber : this.TelNumber
     }
   
-    if (this.AddressBookEntry.firstName) {
+    if (this.contact.firstName) {
       this.service.updateAddress(entry).subscribe(res => {
         this.onClose.emit(true);
       });

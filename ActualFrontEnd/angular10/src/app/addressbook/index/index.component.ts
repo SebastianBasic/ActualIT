@@ -1,14 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
-import { HttpClient, HttpResponse } from '@angular/common/http';
 import {Subject} from 'rxjs';
-
-class DataTablesResponse {
-  data: any[] = [];
-  draw: number = 0;
-  recordsFiltered: number = 0;
-  recordsTotal: number = 0;
-}
 
 @Component({
   selector: 'app-addressbook-index',
@@ -18,27 +10,31 @@ class DataTablesResponse {
 
 export class IndexComponent implements OnInit, OnDestroy {
 
-  constructor(private service:SharedService, private http: HttpClient) { }
+  constructor(private service:SharedService) { }
 
   @ViewChild('closebutton') closebutton:any;
 
-  AddressBook:any = [];
+  allContacts:any = [];
+  contact:any;
   title = 'AddressBook';
-
-  ModalTitle:string = "";
-  AddressBookEntry:any;
-  ShowAddEditComponent:boolean = false;
-  ShowDeleteComponent:boolean = false;
-  ShowShowComponent:boolean = false;
+  modalTitle:string = "";
+  showAddEditComponent:boolean = false;
+  showDeleteComponent:boolean = false;
+  showShowComponent:boolean = false;
 
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
 
   ngOnInit(): void {
     this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 5,
+      pagingType : 'full_numbers',
+      pageLength : 5,
       lengthMenu : [5, 10, 25],
+      order : [1, 'asc'],
+      columnDefs : [ {
+      targets : [4],
+      orderable : false
+      } ],
     }
   this.refreshAddreessList();
   }
@@ -49,50 +45,51 @@ export class IndexComponent implements OnInit, OnDestroy {
 
   refreshAddreessList() {
     this.service.getAddressList().subscribe(data => {
-      this.AddressBook = data;
+      console.log(data);
+      this.allContacts = data;
       this.dtTrigger.next(this.dtOptions);
     })
   }
 
   addClick(){
-    this.AddressBookEntry = {
-      Id : 0,
-      FirstName : "",
-      LastName : "",
-      Address : "",
-      TelNumber : ""
+    this.contact = {
+      id : 0,
+      firstName : "",
+      lastName : "",
+      address : "",
+      telNumber : ""
     }
 
-    this.ModalTitle = "Add New Address";
-    this.ShowAddEditComponent = true;
+    this.modalTitle = "Add New Address";
+    this.showAddEditComponent = true;
   }
 
-  showClick(address:any){
-    this.AddressBookEntry = address;
+  showClick(contact:any){
+    this.contact = contact;
 
-    this.ModalTitle = "Record details";
-    this.ShowShowComponent = true;
+    this.modalTitle = "Record details";
+    this.showShowComponent = true;
   }
 
-  editClick(address:any){
-    this.AddressBookEntry = address;
+  editClick(contact:any){
+    this.contact = contact;
 
-    this.ModalTitle = "Edit Address";
-    this.ShowAddEditComponent = true;
+    this.modalTitle = "Edit Address";
+    this.showAddEditComponent = true;
   }
 
-  deleteClick(address:any){
-    this.AddressBookEntry = address;
+  deleteClick(contact:any){
+    this.contact = contact;
 
-    this.ModalTitle = "Delete Address";
-    this.ShowDeleteComponent = true;
+    this.modalTitle = "Delete Address";
+    this.showDeleteComponent = true;
   }
 
   closeClick(){
     this.closebutton.nativeElement.click();
-    this.ShowAddEditComponent = false;
-    this.ShowDeleteComponent = false;
-    this.ShowShowComponent = false;
+    this.showAddEditComponent = false;
+    this.showDeleteComponent = false;
+    this.showShowComponent = false;
     window.location.reload();
   }
 

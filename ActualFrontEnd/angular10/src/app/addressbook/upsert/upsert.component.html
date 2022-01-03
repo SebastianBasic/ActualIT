@@ -2,7 +2,7 @@
     <div class="form-group">
         <label class="col-form-label" class="control-label">first name</label>
         <div class="col">
-            <input required type="text" class="form-control" [(ngModel)]="FirstName" name="FirstName"
+            <input required type="text" class="form-control" [(ngModel)]="FirstName" name="firstName"
             placeholder="Enter first name" #firstName="ngModel">
             <span class="text-danger" *ngIf="f.submitted && firstName.invalid">First name is a required field.</span>
         </div>
@@ -10,7 +10,7 @@
     <div class="form-group">
         <label class="col-form-label">last name</label>
         <div class="col">
-            <input required type="text" class="form-control" [(ngModel)]="LastName" name="LastName"
+            <input required type="text" class="form-control" [(ngModel)]="LastName" name="lastName"
             placeholder="Enter first name" #lastName="ngModel">
             <span class="text-danger" *ngIf="f.submitted && lastName.invalid">Last name is a required field.</span>
         </div>
@@ -18,7 +18,7 @@
     <div class="form-group">
         <label class="col-form-label">address</label>
         <div class="col">
-            <input required type="text" class="form-control" [(ngModel)]="Address" name="Address"
+            <input required type="text" class="form-control" [(ngModel)]="Address" name="address"
             placeholder="Enter first name" #address="ngModel">
             <span class="text-danger" *ngIf="f.submitted && address.invalid">Address is a required field.</span>
         </div>
@@ -26,7 +26,7 @@
     <div class="form-group">
         <label class="col-form-label">phone number</label>
         <div class="col">
-            <input required type="text" class="form-control" [(ngModel)]="TelNumber" name="TelNumber"
+            <input required type="text" class="form-control" [(ngModel)]="TelNumber" name="telNumber"
             placeholder="Enter first name"  #telNumber="ngModel">
             <span class="text-danger" *ngIf="f.submitted && telNumber.invalid">Address is a required field.</span>
         </div>
@@ -34,9 +34,9 @@
 
 <div class="form-group" style="margin-top: 5%;">
     <div class="col">
-    <button type="submit" class="btn btn-primary" *ngIf="AddressBookEntry.Id==0">Add</button>
+    <button type="submit" class="btn btn-primary" *ngIf="contact.id==0">Add</button>
 
-    <button type="submit" class="btn btn-primary" *ngIf="AddressBookEntry.Id!=0">Update</button>
+    <button type="submit" class="btn btn-primary" *ngIf="contact.id!=0">Update</button>
     </div>
 </div>
 </form>

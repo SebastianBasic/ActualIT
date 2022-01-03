@@ -1,4 +1,4 @@
-<div class="container" style="margin-top: 1%;">
+<div class="container">
     <div class="row" style="margin-bottom: 5%;">
         <h1 class="display-4 text-center">Address Book CRUD Application</h1>
     </div>
@@ -8,17 +8,17 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
                     <button #closebutton type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                     (click)="closeClick()"></button>
                 </div>
                 <div class="modal-body">
-                    <app-addressbook-upsert-form [AddressBookEntry] = "AddressBookEntry" 
-                    *ngIf="ShowAddEditComponent" (onClose)="closeClick()"></app-addressbook-upsert-form>
-                    <app-addressbook-delete-confirm [AddressBookEntry] = "AddressBookEntry"
-                    *ngIf="ShowDeleteComponent" (onClose)="closeClick()"></app-addressbook-delete-confirm>
-                    <app-addressbook-show [AddressBookEntry] = "AddressBookEntry"
-                    *ngIf="ShowShowComponent" (onClose)="closeClick()"></app-addressbook-show>
+                    <app-addressbook-upsert-form [contact] = "contact" 
+                    *ngIf="showAddEditComponent" (onClose)="closeClick()"></app-addressbook-upsert-form>
+                    <app-addressbook-delete-confirm [contact] = "contact"
+                    *ngIf="showDeleteComponent" (onClose)="closeClick()"></app-addressbook-delete-confirm>
+                    <app-addressbook-show [contact] = "contact"
+                    *ngIf="showShowComponent" (onClose)="closeClick()"></app-addressbook-show>
                 </div>
             </div>
         </div>
@@ -49,27 +49,27 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let Address of AddressBook">
-                    <td>{{ Address.firstName }}</td>
-                    <td>{{ Address.lastName }}</td>
-                    <td>{{ Address.adress }}</td>
-                    <td>{{ Address.telNumber }}</td>
+                <tr *ngFor="let contact of allContacts">
+                    <td>{{ contact.firstName }}</td>
+                    <td>{{ contact.lastName }}</td>
+                    <td>{{ contact.address }}</td>
+                    <td>{{ contact.telNumber }}</td>
                     <td>
                         <button class="btn btn-success text-white" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                        (click)="showClick(Address)" data-backdrop="static"
+                        (click)="showClick(contact)" data-backdrop="static"
                         data-keyboard="false" title="view details">
                             <i class="far fa-eye"></i>
                         </button>
                         &nbsp;
                         <button class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                        (click)="editClick(Address)" data-backdrop="static"
+                        (click)="editClick(contact)" data-backdrop="static"
                         data-keyboard="false" title="edit record">
                             <i class="far fa-edit"></i>
                         </button>
                         &nbsp;
                         <button class="btn btn-danger" 
                         title="delete record" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                        data-backdrop="static" (click)="deleteClick(Address)" data-keyboard="false">
+                        data-backdrop="static" (click)="deleteClick(contact)" data-keyboard="false">
                             <i class="far fa-trash"></i>
                         </button>
                     </td>

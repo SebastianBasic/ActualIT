@@ -10,18 +10,18 @@ export class DeleteComponent implements OnInit {
 
   constructor(private service: SharedService) { }
 
-  @Input() AddressBookEntry:any;
+  @Input() contact:any;
   @Output() onClose: EventEmitter<boolean> = new EventEmitter();
-  Id:string = "";
+  id:string = "";
 
 
 
   ngOnInit(): void {
-    this.Id = this.AddressBookEntry.id;
+    this.id = this.contact.id;
   }
 
   deleteAddressBookEntry(){
-    this.service.deleteAddress(this.Id).subscribe(data=>{
+    this.service.deleteAddress(this.id).subscribe(data=>{
       this.onClose.emit(true);
     });   
   }
